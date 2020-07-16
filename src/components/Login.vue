@@ -58,6 +58,7 @@ export default {
           if (resp.status === 200 && this.userinfo.passWord === resp.data.Data.UserPwd) {
             this.$message.success('登陆成功')
             window.sessionStorage.setItem('token', resp.data.Data.UserId)
+            window.sessionStorage.setItem('user', resp.data.Data)
             this.$router.push('/home')
           } else {
             this.$message.error('登录失败')

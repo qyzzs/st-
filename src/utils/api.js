@@ -1,9 +1,15 @@
 import axios from 'axios'
-const base = 'http://localhost:8077/'
+axios.interceptors.request.use(config => {
+  // 添加请求头字段  --服务器判断请求头是否正确，filtter 驳回
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+axios.defaults.baseURL = 'http://localhost:8077/'
+// const base = 'http://localhost:8077/'
 export const postKeyValueRequest = (url, params) => {
   return axios({
     method: 'post',
-    url: `${base}${url}`,
+    url: `${url}`,
     data: params,
     transformRequest: [function (data) {
       let ret = ''
@@ -20,28 +26,29 @@ export const postKeyValueRequest = (url, params) => {
 export const postRequest = (url, params) => {
   return axios({
     method: 'post',
-    url: `${base}${url}`,
+    url: `${url}`,
     data: params
   })
 }
 export const putRequest = (url, params) => {
   return axios({
     method: 'put',
-    url: `${base}${url}`,
+    url: `${url}`,
     data: params
   })
 }
 export const getRequest = (url, params) => {
+  console.log(params)
   return axios({
     method: 'get',
-    url: `${base}${url}`,
+    url: `${url}`,
     params: params
   })
 }
 export const deleteRequest = (url, params) => {
   return axios({
     method: 'delete',
-    url: `${base}${url}`,
+    url: `${url}`,
     params: params
   })
 }
