@@ -86,7 +86,6 @@ export default {
       const url = 'api/wareHouseIn/getAllWareHouseIn/?'
       this.getRequest(url, { pageindex: this.pageIndex, pageSize: this.pageSize }).then(resp => {
         console.log(resp)
-        
       })
     }
   }
