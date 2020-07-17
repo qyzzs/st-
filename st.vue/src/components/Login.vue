@@ -52,13 +52,13 @@ export default {
     login () {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) { } else {
-          const url = 'api/user/checkUser/?'
-          const resp = await this.getRequest(url, { username: this.userinfo.userName })
+          const url = '/user/login?'
+          const resp = await this.getRequest(url, { username: this.userinfo.userName, password: this.userinfo.passWord })
           console.log(resp)
-          if (resp.status === 200 && this.userinfo.passWord === resp.data.Data.UserPwd) {
+          if (resp.status === 200 && this.userinfo.passWord === resp.data.extend.user.userPwd) {
             this.$message.success('登陆成功')
-            window.sessionStorage.setItem('token', resp.data.Data.UserId)
-            window.sessionStorage.setItem('user', resp.data.Data)
+            window.sessionStorage.setItem('token', resp.data.extend.token)
+            window.sessionStorage.setItem('user', resp.data.extend.user)
             this.$router.push('/home')
           } else {
             this.$message.error('登录失败')

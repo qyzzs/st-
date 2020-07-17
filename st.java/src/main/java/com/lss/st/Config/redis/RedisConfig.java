@@ -1,4 +1,4 @@
-package com.lss.st.util.Redis;
+package com.lss.st.Config.redis;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

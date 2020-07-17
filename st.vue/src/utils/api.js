@@ -4,7 +4,7 @@ axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
 })
-axios.defaults.baseURL = 'http://localhost:8077/'
+axios.defaults.baseURL = 'http://localhost:8088/'
 // const base = 'http://localhost:8077/'
 export const postKeyValueRequest = (url, params) => {
   return axios({
@@ -43,6 +43,7 @@ export const getRequest = (url, params) => {
     method: 'get',
     url: `${url}`,
     params: params
+
   })
 }
 export const deleteRequest = (url, params) => {
