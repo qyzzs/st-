@@ -10,4 +10,5 @@ public interface UserService {
     public int Add(User user);
     public int Delete(Integer id);
     public User selectOne(User user);
+
 }

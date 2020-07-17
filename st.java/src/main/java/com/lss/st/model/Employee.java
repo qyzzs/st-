@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Accessors(chain = true)
-@TableName(value = "emplooyee" )
+@TableName(value = "employee" )
 public class Employee {
     private Integer id;
     private String name;
@@ -58,7 +58,7 @@ public class Employee {
 
     private String workState;
 
-    private String workID;
+    private String workId;
 
     private Double contractTerm;
 
@@ -77,7 +77,7 @@ public class Employee {
     private Integer workAge;
 //    private Nation nation;
 //    private Politicsstatus politicsstatus;
-    private Department department;
+//    private Department department;
 //    private JobLevel jobLevel;
 //    private Position position;
 //    private Salary salary;

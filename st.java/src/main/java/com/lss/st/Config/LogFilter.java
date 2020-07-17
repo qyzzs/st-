@@ -15,6 +15,10 @@ public class LogFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req=(HttpServletRequest)servletRequest;
         HttpServletResponse rep= (HttpServletResponse) servletResponse;
+        rep.setHeader("Access-Control-Allow-Origin", "*");
+        rep.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        rep.setHeader("Access-Control-Max-Age", "3600");
+        rep.setHeader("Access-Control-Allow-Headers", "content-type,Authorization");
         String token=req.getHeader("Authorization");
         System.out.println("token:"+token);
     }
