@@ -23,4 +23,8 @@ public class TestDao {
         List<Menu> l = menuDao.selectList(null);
         l.forEach(u-> System.out.println(u));
     }
+    @Test
+    public  void test1(){
+        menuDao.selectWithSubmenu().forEach(munu -> System.out.println(munu));
+    }
 }

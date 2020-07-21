@@ -18,7 +18,7 @@ public class MenuController {
     @ResponseBody
     @RequestMapping("/menus")
     public Msg findAllMenu(){
-        List<Menu> menus=menuService.FindAll();
+        List<Menu> menus=menuService.selectWithSubmenu();
         return Msg.success().add("menus",menus);
     }
 }

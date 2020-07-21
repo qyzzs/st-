@@ -18,4 +18,9 @@ public class MenuServiceImpl implements MenuService {
     public List<Menu> FindAll() {
         return menuDao.selectList(null);
     }
+
+    @Override
+    public List<Menu> selectWithSubmenu() {
+        return menuDao.selectWithSubmenu();
+    }
 }

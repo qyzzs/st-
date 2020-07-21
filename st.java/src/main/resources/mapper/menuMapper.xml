@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lss.st.dao.MenuDao">
+    <resultMap id="menuResulMap" type="com.lss.st.model.Menu">
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_id" property="menuId"/>
+        <result column="menu_en_name" property="menuEnName"/>
+        <collection property="submenuList" javaType="ArrayList" ofType="Submenu" column="submenu_id" select="getSubmenuById"/>
+    </resultMap>
+    <select id="getSubmenuById" resultType="com.lss.st.model.Submenu">
+        select * from submenu where submenu_id=#{submenu_id}
+    </select>
+    <select id="selectWithSubmenu" resultMap="menuResulMap">
+        select * from menu
+    </select>
+</mapper>

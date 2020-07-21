@@ -27,17 +27,21 @@
       <!-- 左侧边菜单 -->
       <el-aside width="200px">
         <el-menu
-          background-color="#FFFFFF"
-          text-color="#131212"
-          active-text-color="#ffd04b"
-          router>
+          class="el-menu-vertical-demo"
+          background-color="#fff"
+          text-color="#1E1E1E"
+          active-text-color="#ffd04b">
           <el-submenu :index="item.menuId+''" v-for="item in menulist" :key="item.menuId">
             <template slot="title">
-              <i class="el-icon-location"></i>
+              <i :class="iconObj[item.menuId]"></i>
               <span>{{item.menuName}}</span>
             </template>
-              <el-menu-item index="/User">员工</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
+              <el-menu-item :index="subitem.submeid+''" v-for="subitem in item.submenuList" :key="subitem.submeid">
+                <template slot="title">
+                  <i class="el-icon-menu"></i>
+                  <span>{{subitem.submenuName}}</span>
+                </template>
+              </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -55,7 +59,14 @@ export default {
     return {
       pageIndex: 1,
       pageSize: 5,
-      menulist: []
+      menulist: [],
+      iconObj: {
+        1: 'el-icon-user-solid',
+        2: 'el-icon-s-grid',
+        3: 'el-icon-s-release',
+        4: 'el-icon-help',
+        5: 'el-icon-s-operation'
+      }
     }
   },
   // computed: {
@@ -74,6 +85,7 @@ export default {
     getAllmenus () {
       this.getRequest('/menus').then(resp => {
         this.menulist = resp.data.extend.menus
+        console.log('11')
         console.log(resp)
       })
     }
