@@ -5,8 +5,8 @@ import './plugins/element.js'
 // 导入全局样式
 import './assets/css/global.css'
 // import axios from 'axios'
-import { postRequest, postKeyValueRequest, putRequest, deleteRequest, getRequest } from './utils/api'
 
+import { postRequest, postKeyValueRequest, putRequest, deleteRequest, getRequest } from './utils/api'
 Vue.config.productionTip = false
 Vue.prototype.postRequest = postRequest
 Vue.prototype.postKeyValueRequest = postKeyValueRequest

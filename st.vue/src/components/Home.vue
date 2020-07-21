@@ -29,34 +29,22 @@
         <el-menu
           background-color="#FFFFFF"
           text-color="#131212"
-          active-text-color="#ffd04b">
-          <el-submenu index="1">
+          active-text-color="#ffd04b"
+          router>
+          <el-submenu :index="item.menuId+''" v-for="item in menulist" :key="item.menuId">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>员工资料</span>
+              <span>{{item.menuName}}</span>
             </template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="/User">员工</el-menu-item>
               <el-menu-item index="1-2">选项2</el-menu-item>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">人事管理</span>
-          </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <i class="el-icon-document"></i>
-            <span slot="title">薪资管理</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">系统管理</span>
-          </el-menu-item>
         </el-menu>
       </el-aside>
       <!--右边内容主体 -->
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -66,7 +54,8 @@ export default {
   data () {
     return {
       pageIndex: 1,
-      pageSize: 5
+      pageSize: 5,
+      menulist: []
     }
   },
   // computed: {
@@ -75,16 +64,16 @@ export default {
   //   }
   // },
   created () {
-    this.getAllemps()
+    this.getAllmenus()
   },
   methods: {
     quit () {
       window.sessionStorage.clear()
       this.$router.push('/login')
     },
-    getAllemps () {
-      const url = 'api/wareHouseIn/getAllWareHouseIn/?'
-      this.getRequest(url, { pageindex: this.pageIndex, pageSize: this.pageSize }).then(resp => {
+    getAllmenus () {
+      this.getRequest('/menus').then(resp => {
+        this.menulist = resp.data.extend.menus
         console.log(resp)
       })
     }

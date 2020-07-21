@@ -22,6 +22,7 @@ public class EmpsController {
     private EmpService empService;
     @Autowired
     private RedisUtil redisUtil;
+
     @RequestMapping("/findall")
     @ResponseBody
     public Msg findAll(@RequestParam(defaultValue = "1")Integer pageIndex,@RequestParam(defaultValue = "5")Integer pageSize){
@@ -32,4 +33,5 @@ public class EmpsController {
         Long total=empPage.getTotal();
         return Msg.success().add("emps",emps).add("total",total);
     }
+
 }

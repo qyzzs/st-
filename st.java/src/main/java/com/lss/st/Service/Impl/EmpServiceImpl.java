@@ -36,15 +36,15 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public IPage<Employee> FindAllByPage(Integer pageIndex, Integer pageSize,Employee employee) {
-        QueryWrapper<Employee> queryWrapper=new QueryWrapper<>();
-        if(!employee.getName().isEmpty()){
-            queryWrapper.eq("name",employee.getName());
-        }
-        if (!employee.getPhone().isEmpty()){
-            queryWrapper.eq("phone",employee.getPhone());
-        }
+//        QueryWrapper<Employee> queryWrapper=new QueryWrapper<>();
+//        if(!employee.getName().isEmpty()){
+//            queryWrapper.eq("name",employee.getName());
+//        }
+//        if (!employee.getPhone().isEmpty()){
+//            queryWrapper.eq("phone",employee.getPhone());
+//        }
 
         IPage<Employee> page = new Page<>(pageIndex,pageSize);
-        return empsDao.selectPage(page,queryWrapper);
+        return empsDao.selectPage(page,null);
     }
 }
