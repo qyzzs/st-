@@ -1,5 +1,11 @@
 import Vue from 'vue'
-import { TableColumn, Table, Card, Button, Form, FormItem, Input, Checkbox, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+import { ButtonGroup, Col, Row, BreadcrumbItem, Breadcrumb, TableColumn, Table, Card, Button, Form, FormItem, Input, Checkbox, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+Vue.use(ButtonGroup)
+Vue.use(Col)
+Vue.use(Row)
+Vue.use(BreadcrumbItem)
+Vue.use(Breadcrumb)
+
 Vue.use(TableColumn)
 Vue.use(Table)
 Vue.use(Card)

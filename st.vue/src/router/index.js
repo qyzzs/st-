@@ -4,6 +4,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import User from '../components/user/User.vue'
 import Welcome from '../components/Welcome.vue'
+
 Vue.use(Router)
 
 const router = new Router({

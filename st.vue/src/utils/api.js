@@ -2,7 +2,7 @@ import axios from 'axios'
 axios.interceptors.request.use(config => {
   // 添加请求头字段  --服务器判断请求头是否正确，filtter 驳回
   config.headers.Authorization = window.sessionStorage.getItem('token')
-  console.log(config)
+  // console.log(config)
   return config
 })
 axios.defaults.baseURL = 'http://localhost:8088/'
