@@ -68,8 +68,6 @@ export default {
   name: 'home',
   data () {
     return {
-      pageIndex: 1,
-      pageSize: 5,
       isCollapse: false,
       menulist: [],
       iconObj: {

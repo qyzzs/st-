@@ -1,5 +1,8 @@
 import Vue from 'vue'
-import { ButtonGroup, Col, Row, BreadcrumbItem, Breadcrumb, TableColumn, Table, Card, Button, Form, FormItem, Input, Checkbox, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+import { Pagination, ButtonGroup, Col, Row, BreadcrumbItem, Breadcrumb, TableColumn, Table, Card, Button, Form, FormItem, Input, Checkbox, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+
+Vue.use(Pagination)
+
 Vue.use(ButtonGroup)
 Vue.use(Col)
 Vue.use(Row)

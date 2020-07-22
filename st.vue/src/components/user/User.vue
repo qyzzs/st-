@@ -48,7 +48,17 @@
           label="生日">
         </el-table-column>
       </el-table>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pageIndex"
+        :page-sizes="[10, 20, 30, 40, 50, 100]"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalNum">
+      </el-pagination>
     </el-card>
+
   </el-card>
 </div>
 </template>
@@ -57,7 +67,10 @@ export default {
   data () {
     return {
       empsData: [],
-      multipleSelection: []
+      multipleSelection: [],
+      totalNum: 0,
+      pageIndex: 1,
+      pageSize: 10
     }
   },
   created () {
@@ -66,13 +79,23 @@ export default {
   methods: {
     getAllemps () {
       const url = 'emps/findall?'
-      this.getRequest(url, { pageindex: this.pageIndex, pageSize: this.pageSize }).then(resp => {
+      this.getRequest(url, { pageIndex: this.pageIndex, pageSize: this.pageSize }).then(resp => {
+        console.log('111')
+        console.log(resp)
         this.empsData = resp.data.extend.emps
+        this.totalNum = resp.data.extend.total
       })
     },
     handleSelectionChange (val) {
       this.multipleSelection = val
       console.log(val)
+    },
+    handleSizeChange (val) {
+      this.pageSize = val
+    },
+    handleCurrentChange (val) {
+      this.pageIndex = val
+      this.getAllemps()
     }
   }
 }
